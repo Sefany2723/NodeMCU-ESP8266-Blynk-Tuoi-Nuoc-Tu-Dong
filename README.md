@@ -91,14 +91,14 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 
 ### 5.2. Đăng ký tài khoản và đăng nhập
 - Mở app Blynk, chọn **Create New Account** và nhập email và mật khẩu để đăng ký tài khoản.
-- Nhập thông tin **custom server** như sau 
+- Nhập thông tin **Custom Server** như sau 
     - Server: blynk-server.com
     - Port: 9443
 - Nếu bạn muốn tự dựng server của riêng mình tham khảo [tại đây](https://github.com/Peterkn2001/blynk-server)
 
 ### 5.3. Tạo project Blynk
 - Sau khi đăng nhập, nhấn dấu `+` để tạo một project mới.
-- Chọn **Device** là ESP8266 và chọn **Connection Type** là WiFi.
+- Chọn **Device** là NodeMCU và chọn **Connection Type** là WiFi.
 - Nhấn **Create** để tạo project, bạn sẽ nhận được mã `auth token` qua email. Lưu mã này để dùng trong code.
 
 ### 5.4. Thêm các widget vào project
