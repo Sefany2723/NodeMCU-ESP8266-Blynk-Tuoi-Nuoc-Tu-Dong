@@ -72,7 +72,7 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 - Trong Arduino IDE, vào **Tools > Manage Libraries**.
 - Tìm kiếm `ESP8266WiFi` và chọn **Install**.
 
-#### Bước 2: Cài thư viện Blynk
+#### Bước 2: Cài thư viện Blynk (v0.6.1)
 - Tương tự, tìm và cài thư viện `Blynk` từ **Manage Libraries**.
 
 #### Bước 3: Cài thư viện Time và NTPClient
