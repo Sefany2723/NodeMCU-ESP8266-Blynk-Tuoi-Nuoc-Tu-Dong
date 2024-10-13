@@ -4,7 +4,8 @@
 
 Hệ thống tưới tự động này sử dụng vi điều khiển ESP8266 kết hợp với app Blynk (phiên bản legacy) và các cảm biến, relay để kiểm soát quá trình tưới nước cho cây trồng. Dự án này cho phép bạn điều khiển quá trình tưới tự động dựa trên độ ẩm của đất hoặc theo thời gian đã thiết lập. Bạn cũng có thể theo dõi và điều khiển hệ thống từ xa qua smartphone.
 - Dán đoạn mã sau vào PowerShell hoặc Bash để tải mã nguồn về máy tính:
-                        git clone https://github.com/Sefany2723/ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git
+
+        git clone https://github.com/Sefany2723/ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git
 
 ### Chức năng chính:
 - Điều khiển hệ thống tưới tự động dựa trên độ ẩm đất.
