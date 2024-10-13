@@ -110,7 +110,21 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 ---
 
 ## 6. Cách sử dụng hệ thống
+Lắp mạch theo sơ đồ, cấu hình mã nguồn:
+- Mở file mã nguồn trong Arduino IDE và cập nhật các thông tin WiFi và Blynk:
 
+        char auth[] = "YOUR_BLYNK_AUTH_TOKEN";
+        char ssid[] = "YOUR_WIFI_SSID";
+        char pass[] = "YOUR_WIFI_PASSWORD";
+
+- Thay thế thông tin email của bạn trong hàm gửi email:
+
+        Blynk.email("YOUR_EMAIL@gmail.com", "Cảnh báo độ ẩm", "Độ ẩm cao!");
+
+- Nạp chương trình vào ESP8266
+    - Kết nối ESP8266 với máy tính qua cáp USB.
+    - Chọn Board là NodeMCU 1.0 và cổng COM tương ứng.
+    - Nhấn Upload để nạp chương trình vào ESP8266.
 ### 6.1. Các chế độ hoạt động
 - **Chế độ tự động:** Dựa vào ngưỡng độ ẩm đất, hệ thống sẽ tự động bật/tắt relay để điều khiển bơm nước.
 - **Chế độ thủ công:** Người dùng có thể bật/tắt bơm nước trực tiếp qua app Blynk.
