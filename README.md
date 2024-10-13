@@ -88,7 +88,10 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 
 ### 5.2. Đăng ký tài khoản và đăng nhập
 - Mở app Blynk, chọn **Create New Account** và nhập email và mật khẩu để đăng ký tài khoản.
-- Bạn có thể sử dụng server Blynk mặc định hoặc nhập thông tin **custom server** nếu bạn tự host server.
+- Nhập thông tin **custom server** như sau 
+    - Server: blynk-server.com
+    - Port: 9443
+- Nếu bạn muốn tự dựng server của riêng mình tham khảo [tại đây](https://github.com/Peterkn2001/blynk-server)
 
 ### 5.3. Tạo project Blynk
 - Sau khi đăng nhập, nhấn dấu `+` để tạo một project mới.
