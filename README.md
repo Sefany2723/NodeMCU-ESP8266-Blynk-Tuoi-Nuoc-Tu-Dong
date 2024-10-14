@@ -3,9 +3,6 @@
 ## 1. Giới thiệu
 
 Hệ thống tưới tự động này sử dụng vi điều khiển ESP8266 kết hợp với app Blynk (phiên bản legacy) và các cảm biến, relay để kiểm soát quá trình tưới nước cho cây trồng. Dự án này cho phép bạn điều khiển quá trình tưới tự động dựa trên độ ẩm của đất hoặc theo thời gian đã thiết lập. Bạn cũng có thể theo dõi và điều khiển hệ thống từ xa qua smartphone.
-- Dán đoạn mã sau vào PowerShell hoặc Bash để tải mã nguồn về máy tính:
-
-        git clone https://github.com/Sefany2723/ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git
 
 ### Chức năng chính:
 - Điều khiển hệ thống tưới tự động dựa trên độ ẩm đất.
@@ -102,15 +99,23 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 - Nhấn **Create** để tạo project, bạn sẽ nhận được mã `auth token` qua email. Lưu mã này để dùng trong code.
 
 ### 5.4. Thêm các widget vào project
-- **Button Widget**: Điều khiển relay thủ công.
-- **Gauge Widget**: Hiển thị độ ẩm đất.
-- **LCD Widget**: Hiển thị trạng thái và thời gian hệ thống.
-- **Time Input Widget**: Cài đặt thời gian hẹn giờ tưới nước.
+- **Styled Button Widget (V9)**: Điều khiển relay khi ở chế độ thủ công.
+- **Value Display Widget (V1)**: Hiển thị độ ẩm đất.
+- **LCD Widget (V6)**: Hiển thị trạng thái độ ẩm trên LCD.
+- **Time Input Widget (V15)**: Cài đặt thời gian hẹn giờ tưới nước.
+- **LED Widget (V10, V11, V12)**: Hiển thị trạng thái cảnh báo.
+- **Numeric Input (V3, V4)**: Thiết lập ngưỡng trên và ngưỡng dưới phù hợp cho cây trồng.
+- **Value Display (V13, V14)**: Hiển thị thời gian và ngày tháng hiện tại theo thời gian thực.
+- **Segmented Switch (V2)**: Chọn chế độ hoạt động để điều khiển relay.
+- **SuperChart (V8)**: Đồ thị giá trị độ ẩm theo thời gian.
 
 ---
 
 ## 6. Cách sử dụng hệ thống
-Lắp mạch theo sơ đồ, cấu hình mã nguồn:
+Lắp mạch theo sơ đồ, tải về và cấu hình mã nguồn:
+- Dán đoạn mã sau vào PowerShell (Windows) hoặc Bash, Zsh (Linux) để tải mã nguồn về máy tính:
+
+        git clone https://github.com/Sefany2723/ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git && cd ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong
 - Mở file mã nguồn trong Arduino IDE và cập nhật các thông tin WiFi và Blynk:
 
         char auth[] = "YOUR_BLYNK_AUTH_TOKEN";
@@ -135,6 +140,7 @@ Lắp mạch theo sơ đồ, cấu hình mã nguồn:
 
 ### 6.3. Hiển thị trạng thái và thời gian
 - Thời gian và ngày tháng được đồng bộ với NTP server và hiển thị trên **Value Display Widget**.
+- Giá trị độ ẩm, đồ thị và trạng thái (cao, thấp, bình thường) của nó cũng hiển thị trên app blynk nhờ widget đã cấu hình ở **mục 5**.
 
 ---
 
@@ -223,18 +229,112 @@ Lắp mạch theo sơ đồ, cấu hình mã nguồn:
 
 ---
 
+Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. Ghi chú** để chi tiết và đầy đủ hơn:
+
+---
+
 ## 8. Xử lý sự cố
 
-- **ESP8266 không kết nối được WiFi**: Kiểm tra tên và mật khẩu WiFi trong mã. Đảm bảo tín hiệu WiFi mạnh và gần.
-- **Ứng dụng Blynk không hiển thị đúng thông tin**: Kiểm tra kết nối mạng và đảm bảo mã `auth token` trong mã nguồn trùng khớp với token trên app.
-- **Relay không hoạt động**: Đảm bảo relay được cấp nguồn đúng cách và được kết nối đúng chân với ESP8266.
+### 8.1. **ESP8266 không kết nối được WiFi**
+- **Nguyên nhân có thể:**
+  - Sai tên hoặc mật khẩu WiFi trong mã nguồn.
+  - Tín hiệu WiFi yếu hoặc quá xa ESP8266.
+  - Mạng WiFi không hỗ trợ 2.4GHz (ESP8266 chỉ hoạt động với băng tần 2.4GHz).
+  - Router WiFi có thể đang chặn ESP8266 do cài đặt bảo mật (chẳng hạn lọc MAC).
+  
+- **Cách khắc phục:**
+  - Kiểm tra và đảm bảo tên và mật khẩu WiFi đúng.
+  - Đưa ESP8266 lại gần router WiFi để tăng tín hiệu.
+  - Kiểm tra và thay đổi cài đặt router để cho phép kết nối của ESP8266.
+  - Khởi động lại cả router và ESP8266.
+
+### 8.2. **Ứng dụng Blynk không hiển thị đúng thông tin**
+- **Nguyên nhân có thể:**
+  - ESP8266 không kết nối được với server Blynk.
+  - `Auth Token` trong mã không khớp với mã trên app Blynk.
+  - Server Blynk đang bị gián đoạn hoặc kết nối mạng của bạn yếu.
+
+- **Cách khắc phục:**
+  - Kiểm tra kết nối mạng của điện thoại và ESP8266.
+  - Đảm bảo `auth token` trong mã nguồn trùng khớp với mã trong email từ Blynk.
+  - Khởi động lại app Blynk và kiểm tra lại các thông tin cấu hình.
+  - Thử kết nối lại ESP8266 với WiFi hoặc kiểm tra server Blynk qua trang trạng thái của họ.
+
+### 8.3. **Relay không hoạt động**
+- **Nguyên nhân có thể:**
+  - Relay không được cấp nguồn đúng cách.
+  - Chân điều khiển relay trên ESP8266 không được cấu hình hoặc kết nối chính xác.
+  - Lỗi logic trong chương trình khi điều khiển relay.
+
+- **Cách khắc phục:**
+  - Kiểm tra nguồn cấp cho relay, đảm bảo relay được cấp nguồn phù hợp.
+  - Kiểm tra kết nối dây giữa relay và ESP8266.
+  - Đảm bảo chân D2 (hoặc chân khác nếu đã thay đổi) của ESP8266 được lập trình đúng cách để điều khiển relay.
+  - Kiểm tra trong chương trình có lệnh điều khiển relay hợp lý không.
+
+### 8.4. **Bơm nước không hoạt động**
+- **Nguyên nhân có thể:**
+  - Relay không đóng/mở để cấp điện cho bơm.
+  - Nguồn cấp cho bơm nước không đủ hoặc không ổn định.
+  - Lỗi kết nối giữa relay và bơm nước.
+
+- **Cách khắc phục:**
+  - Kiểm tra nguồn điện cung cấp cho bơm nước, đảm bảo nguồn 12V cấp cho bơm là ổn định.
+  - Kiểm tra relay có hoạt động hay không bằng cách nghe tiếng "tạch" khi relay đóng/mở.
+  - Kiểm tra kết nối giữa relay và bơm nước.
+
+### 8.5. **Đèn LED cảnh báo không sáng**
+- **Nguyên nhân có thể:**
+  - Lỗi kết nối giữa đèn LED và ESP8266.
+  - Chân điều khiển đèn LED không được cấu hình chính xác.
+  - Lỗi logic trong chương trình điều khiển LED.
+
+- **Cách khắc phục:**
+  - Kiểm tra kết nối dây giữa LED và ESP8266.
+  - Đảm bảo các chân D5, D6, D7 của ESP8266 được lập trình để điều khiển đèn LED tương ứng.
+  - Kiểm tra lại phần mã điều khiển LED để đảm bảo các lệnh được thực thi đúng.
+
+### 8.6. **Không nhận được thông báo qua email**
+- **Nguyên nhân có thể:**
+  - Cấu hình email không chính xác trong mã nguồn.
+  - Server email có thể đang chặn yêu cầu gửi email từ Blynk.
+  - Giới hạn gửi email của Blynk đã bị vượt qua (Blynk Legacy có giới hạn số lượng email miễn phí hàng ngày).
+
+- **Cách khắc phục:**
+  - Kiểm tra cấu hình email trong mã, đảm bảo đúng định dạng địa chỉ email.
+  - Thử sử dụng một địa chỉ email khác hoặc cấu hình server SMTP của riêng bạn.
+  - Kiểm tra số lượng email đã được gửi trong ngày, nếu vượt quá giới hạn, hãy đợi sang ngày hôm sau hoặc nâng cấp tài khoản Blynk.
+
+### 8.7. **Không đồng bộ được thời gian thực từ NTP server**
+- **Nguyên nhân có thể:**
+  - Mạng không kết nối được tới NTP server.
+  - Sai URL hoặc cấu hình NTP trong mã nguồn.
+
+- **Cách khắc phục:**
+  - Kiểm tra kết nối mạng của ESP8266.
+  - Đảm bảo URL của NTP server đúng.
+  - Thử thay đổi NTP server thành một server khác (chẳng hạn `time.nist.gov` hoặc `pool.ntp.org`).
 
 ---
 
 ## 9. Ghi chú
-- Đảm bảo bơm nước và nguồn cung cấp điện được kết nối an toàn và chính xác để tránh các tai nạn điện.
 
----
+### 9.1. **An toàn về điện**
+- **Nguồn điện**: Khi làm việc với bơm nước và relay, hãy đảm bảo nguồn cấp điện (12V cho bơm và 5V cho ESP8266/relay) được kết nối đúng cách và ổn định. Tránh sử dụng nguồn điện quá công suất cho các thiết bị.
+- **Tiếp đất**: Đảm bảo rằng tất cả các kết nối điện đều an toàn, đặc biệt khi làm việc với các thiết bị có tiếp xúc với nước. Hãy sử dụng các thiết bị bảo vệ như cầu chì, rơ-le nhiệt để tránh sự cố ngắn mạch hoặc cháy nổ.
+- **Cách ly nước và điện**: Trong quá trình tưới nước, cần tránh để nước tiếp xúc với các phần mạch điện để tránh nguy cơ chập điện hoặc giật điện.
+
+### 9.2. **Bảo trì hệ thống**
+- Thường xuyên kiểm tra và vệ sinh cảm biến độ ẩm để đảm bảo cảm biến không bị bám bẩn hoặc bị hỏng do môi trường ẩm ướt.
+- Kiểm tra lại dây điện và kết nối của các linh kiện sau một thời gian sử dụng, đặc biệt các dây nối tới bơm nước và relay để đảm bảo không bị lỏng hoặc hỏng.
+- Đảm bảo hệ thống luôn được bảo vệ khỏi nước và bụi bằng các hộp bảo vệ, đặc biệt là phần mạch điện và ESP8266.
+
+### 9.3. **Tối ưu hóa năng lượng**
+- Nếu sử dụng hệ thống với pin hoặc nguồn cấp điện năng lượng mặt trời, hãy tối ưu hóa các khoảng thời gian đo lường và cập nhật trạng thái để tiết kiệm năng lượng. Bạn có thể giảm tần suất đọc cảm biến độ ẩm nếu không cần thiết phải đo liên tục.
+- Sử dụng các chế độ **Deep Sleep** của ESP8266 để tiết kiệm năng lượng khi hệ thống không cần hoạt động liên tục.
+
+--- 
+
 
 ## 10. Thông tin liên hệ
 - **Tác giả:** Trần Ngọc Tới
