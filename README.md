@@ -51,7 +51,7 @@
     + [9.3. Tối ưu hóa năng lượng](#93-tối-ưu-hóa-năng-lượng)
   * [10. Thông tin liên hệ](#10-thông-tin-liên-hệ)
 
-
+------
 
 
 # Hệ Thống Tưới Tự Động Sử Dụng ESP8266 NodeMCU và Blynk
