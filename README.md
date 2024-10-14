@@ -286,9 +286,6 @@ Lắp mạch theo sơ đồ, tải về và cấu hình mã nguồn:
 
 ---
 
-Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. Ghi chú** để chi tiết và đầy đủ hơn:
-
----
 
 ## 8. Xử lý sự cố
 
