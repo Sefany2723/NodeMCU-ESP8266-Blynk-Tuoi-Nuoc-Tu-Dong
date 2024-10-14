@@ -1,3 +1,5 @@
+# Table of contents
+
 - [Hệ Thống Tưới Tự Động Sử Dụng ESP8266 NodeMCU và Blynk](#h--th-ng-t--i-t----ng-s--d-ng-esp8266-nodemcu-v--blynk)
   * [1. Giới thiệu](#1-gi-i-thi-u)
     + [Chức năng chính:](#ch-c-n-ng-ch-nh-)
@@ -37,20 +39,19 @@
     + [7.12. `BLYNK_WRITE(VPIN_RELAY_CONTROL)`:](#712--blynk-write-vpin-relay-control---)
     + [7.13. `BLYNK_WRITE(VPIN_TIME_INPUT)`:](#713--blynk-write-vpin-time-input---)
   * [8. Xử lý sự cố](#8-x--l--s--c-)
-    + [8.1. **ESP8266 không kết nối được WiFi**](#81---esp8266-kh-ng-k-t-n-i----c-wifi--)
-    + [8.2. **Ứng dụng Blynk không hiển thị đúng thông tin**](#82----ng-d-ng-blynk-kh-ng-hi-n-th----ng-th-ng-tin--)
-    + [8.3. **Relay không hoạt động**](#83---relay-kh-ng-ho-t---ng--)
-    + [8.4. **Bơm nước không hoạt động**](#84---b-m-n--c-kh-ng-ho-t---ng--)
-    + [8.5. **Đèn LED cảnh báo không sáng**](#85-----n-led-c-nh-b-o-kh-ng-s-ng--)
-    + [8.6. **Không nhận được thông báo qua email**](#86---kh-ng-nh-n----c-th-ng-b-o-qua-email--)
-    + [8.7. **Không đồng bộ được thời gian thực từ NTP server**](#87---kh-ng---ng-b-----c-th-i-gian-th-c-t--ntp-server--)
+    + [8.1. ESP8266 không kết nối được WiFi](#81---esp8266-kh-ng-k-t-n-i----c-wifi--)
+    + [8.2. Ứng dụng Blynk không hiển thị đúng thông tin](#82----ng-d-ng-blynk-kh-ng-hi-n-th----ng-th-ng-tin--)
+    + [8.3. Relay không hoạt động](#83---relay-kh-ng-ho-t---ng--)
+    + [8.4. Bơm nước không hoạt động](#84---b-m-n--c-kh-ng-ho-t---ng--)
+    + [8.5. Đèn LED cảnh báo không sáng](#85-----n-led-c-nh-b-o-kh-ng-s-ng--)
+    + [8.6. Không nhận được thông báo qua email](#86---kh-ng-nh-n----c-th-ng-b-o-qua-email--)
+    + [8.7. Không đồng bộ được thời gian thực từ NTP server](#87---kh-ng---ng-b-----c-th-i-gian-th-c-t--ntp-server--)
   * [9. Ghi chú](#9-ghi-ch-)
-    + [9.1. **An toàn về điện**](#91---an-to-n-v---i-n--)
-    + [9.2. **Bảo trì hệ thống**](#92---b-o-tr--h--th-ng--)
-    + [9.3. **Tối ưu hóa năng lượng**](#93---t-i--u-h-a-n-ng-l--ng--)
+    + [9.1. An toàn về điện](#91---an-to-n-v---i-n--)
+    + [9.2. Bảo trì hệ thống](#92---b-o-tr--h--th-ng--)
+    + [9.3. Tối ưu hóa năng lượng](#93---t-i--u-h-a-n-ng-l--ng--)
   * [10. Thông tin liên hệ](#10-th-ng-tin-li-n-h-)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 # Hệ Thống Tưới Tự Động Sử Dụng ESP8266 NodeMCU và Blynk
