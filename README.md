@@ -98,6 +98,7 @@ Hệ thống tưới tự động này sử dụng vi điều khiển ESP8266 k�
 | A0          | Cảm biến độ ẩm đất | Đọc giá trị độ ẩm đất            |
 
 Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cung cấp trong phần hình ảnh minh họa.
+![Sơ đồ mạch](sodonguyenly.png)
 
 ---
 
@@ -165,6 +166,8 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 - **Value Display (V13, V14)**: Hiển thị thời gian và ngày tháng hiện tại theo thời gian thực.
 - **Segmented Switch (V2)**: Chọn chế độ hoạt động để điều khiển relay.
 - **SuperChart (V8)**: Đồ thị giá trị độ ẩm theo thời gian.
+  Bạn có thể tham khảo cách sắp xếp các widget như hình:
+  ![Giao diện app](giaodienappblynk.jpg)
 
 ---
 
