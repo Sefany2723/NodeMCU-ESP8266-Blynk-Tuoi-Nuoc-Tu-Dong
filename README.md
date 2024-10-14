@@ -339,7 +339,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
 ## 10. Thông tin liên hệ
 - **Tác giả:** Trần Ngọc Tới
 - **Email:** tranngoctoi219@gmail.com
-- **GitHub:** https://github.com/yourprofile
+- **GitHub:** https://github.com/Sefany2723
 
 ---
 
