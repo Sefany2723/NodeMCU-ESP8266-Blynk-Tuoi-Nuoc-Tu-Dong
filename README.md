@@ -1,4 +1,4 @@
-# Hệ Thống Tưới Tự Động Sử Dụng ESP8266 và Blynk
+# Hệ Thống Tưới Tự Động Sử Dụng ESP8266 NodeMCU và Blynk
 
 ## 1. Giới thiệu
 
@@ -16,13 +16,13 @@ Hệ thống tưới tự động này sử dụng vi điều khiển ESP8266 k�
 ## 2. Yêu cầu hệ thống
 
 ### Phần cứng:
-- **ESP8266** (NodeMCU)
+- **ESP8266 (NodeMCU)**.
 - **Relay 5V**: Điều khiển máy bơm nước.
 - **Cảm biến độ ẩm đất**: Để đo độ ẩm.
 - **Bơm nước 12V**: Để tưới nước.
 - **LED RGB**: Để hiển thị trạng thái cảnh báo của hệ thống.
-- **Dây kết nối**, **nguồn 5V** cho relay và ESP8266.
-- **Nguồn 12V** cho máy bơm
+- **Dây kết nối, test board**, **nguồn 5V** cho relay và ESP8266.
+- **Nguồn 12V** cho máy bơm.
 
 ### Phần mềm:
 - **Arduino IDE**: Dùng để lập trình ESP8266.
@@ -84,7 +84,8 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 
 ### 5.1. Tải và cài đặt Blynk App (Legacy)
 - **iOS**: Truy cập [App Store](https://apps.apple.com) và tìm kiếm **Blynk Legacy** để tải về.
-- **Android**: Truy cập [Google Play Store](https://play.google.com) và tìm kiếm **Blynk Legacy** để tải về.
+- **Android**: Truy cập [APKMirror](https://www.apkmirror.com) và tìm kiếm **Blynk Legacy** để tải về.
+- **Cập nhật**: **Blynk App Legacy** đã bị xóa ở **App Store**, vì vậy muốn dùng hệ thống này phải dùng máy **Android**.
 
 ### 5.2. Đăng ký tài khoản và đăng nhập
 - Mở app Blynk, chọn **Create New Account** và nhập email và mật khẩu để đăng ký tài khoản.
