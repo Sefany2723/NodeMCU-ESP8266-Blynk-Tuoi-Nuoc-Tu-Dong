@@ -289,7 +289,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
 
 ## 8. Xử lý sự cố
 
-### 8.1. **ESP8266 không kết nối được WiFi**
+### 8.1. ESP8266 không kết nối được WiFi
 - **Nguyên nhân có thể:**
   - Sai tên hoặc mật khẩu WiFi trong mã nguồn.
   - Tín hiệu WiFi yếu hoặc quá xa ESP8266.
@@ -302,7 +302,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
   - Kiểm tra và thay đổi cài đặt router để cho phép kết nối của ESP8266.
   - Khởi động lại cả router và ESP8266.
 
-### 8.2. **Ứng dụng Blynk không hiển thị đúng thông tin**
+### 8.2. Ứng dụng Blynk không hiển thị đúng thông tin
 - **Nguyên nhân có thể:**
   - ESP8266 không kết nối được với server Blynk.
   - `Auth Token` trong mã không khớp với mã trên app Blynk.
@@ -314,7 +314,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
   - Khởi động lại app Blynk và kiểm tra lại các thông tin cấu hình.
   - Thử kết nối lại ESP8266 với WiFi hoặc kiểm tra server Blynk qua trang trạng thái của họ.
 
-### 8.3. **Relay không hoạt động**
+### 8.3. Relay không hoạt động
 - **Nguyên nhân có thể:**
   - Relay không được cấp nguồn đúng cách.
   - Chân điều khiển relay trên ESP8266 không được cấu hình hoặc kết nối chính xác.
@@ -326,7 +326,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
   - Đảm bảo chân D2 (hoặc chân khác nếu đã thay đổi) của ESP8266 được lập trình đúng cách để điều khiển relay.
   - Kiểm tra trong chương trình có lệnh điều khiển relay hợp lý không.
 
-### 8.4. **Bơm nước không hoạt động**
+### 8.4. Bơm nước không hoạt động
 - **Nguyên nhân có thể:**
   - Relay không đóng/mở để cấp điện cho bơm.
   - Nguồn cấp cho bơm nước không đủ hoặc không ổn định.
@@ -337,7 +337,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
   - Kiểm tra relay có hoạt động hay không bằng cách nghe tiếng "tạch" khi relay đóng/mở.
   - Kiểm tra kết nối giữa relay và bơm nước.
 
-### 8.5. **Đèn LED cảnh báo không sáng**
+### 8.5. Đèn LED cảnh báo không sáng
 - **Nguyên nhân có thể:**
   - Lỗi kết nối giữa đèn LED và ESP8266.
   - Chân điều khiển đèn LED không được cấu hình chính xác.
@@ -348,7 +348,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
   - Đảm bảo các chân D5, D6, D7 của ESP8266 được lập trình để điều khiển đèn LED tương ứng.
   - Kiểm tra lại phần mã điều khiển LED để đảm bảo các lệnh được thực thi đúng.
 
-### 8.6. **Không nhận được thông báo qua email**
+### 8.6. Không nhận được thông báo qua email
 - **Nguyên nhân có thể:**
   - Cấu hình email không chính xác trong mã nguồn.
   - Server email có thể đang chặn yêu cầu gửi email từ Blynk.
@@ -359,7 +359,7 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
   - Thử sử dụng một địa chỉ email khác hoặc cấu hình server SMTP của riêng bạn.
   - Kiểm tra số lượng email đã được gửi trong ngày, nếu vượt quá giới hạn, hãy đợi sang ngày hôm sau hoặc nâng cấp tài khoản Blynk.
 
-### 8.7. **Không đồng bộ được thời gian thực từ NTP server**
+### 8.7. Không đồng bộ được thời gian thực từ NTP server
 - **Nguyên nhân có thể:**
   - Mạng không kết nối được tới NTP server.
   - Sai URL hoặc cấu hình NTP trong mã nguồn.
@@ -373,17 +373,17 @@ Dưới đây là phần bổ sung cho mục **8. Xử lý sự cố** và **9. 
 
 ## 9. Ghi chú
 
-### 9.1. **An toàn về điện**
+### 9.1. An toàn về điện
 - **Nguồn điện**: Khi làm việc với bơm nước và relay, hãy đảm bảo nguồn cấp điện (12V cho bơm và 5V cho ESP8266/relay) được kết nối đúng cách và ổn định. Tránh sử dụng nguồn điện quá công suất cho các thiết bị.
 - **Tiếp đất**: Đảm bảo rằng tất cả các kết nối điện đều an toàn, đặc biệt khi làm việc với các thiết bị có tiếp xúc với nước. Hãy sử dụng các thiết bị bảo vệ như cầu chì, rơ-le nhiệt để tránh sự cố ngắn mạch hoặc cháy nổ.
 - **Cách ly nước và điện**: Trong quá trình tưới nước, cần tránh để nước tiếp xúc với các phần mạch điện để tránh nguy cơ chập điện hoặc giật điện.
 
-### 9.2. **Bảo trì hệ thống**
+### 9.2. Bảo trì hệ thống
 - Thường xuyên kiểm tra và vệ sinh cảm biến độ ẩm để đảm bảo cảm biến không bị bám bẩn hoặc bị hỏng do môi trường ẩm ướt.
 - Kiểm tra lại dây điện và kết nối của các linh kiện sau một thời gian sử dụng, đặc biệt các dây nối tới bơm nước và relay để đảm bảo không bị lỏng hoặc hỏng.
 - Đảm bảo hệ thống luôn được bảo vệ khỏi nước và bụi bằng các hộp bảo vệ, đặc biệt là phần mạch điện và ESP8266.
 
-### 9.3. **Tối ưu hóa năng lượng**
+### 9.3. Tối ưu hóa năng lượng
 - Nếu sử dụng hệ thống với pin hoặc nguồn cấp điện năng lượng mặt trời, hãy tối ưu hóa các khoảng thời gian đo lường và cập nhật trạng thái để tiết kiệm năng lượng. Bạn có thể giảm tần suất đọc cảm biến độ ẩm nếu không cần thiết phải đo liên tục.
 - Sử dụng các chế độ **Deep Sleep** của ESP8266 để tiết kiệm năng lượng khi hệ thống không cần hoạt động liên tục.
 
