@@ -72,13 +72,13 @@ Hệ thống tưới tự động này sử dụng vi điều khiển ESP8266 k�
 ## 2. Yêu cầu hệ thống
 
 ### Phần cứng:
-- **ESP8266 (NodeMCU)**.
-- **Relay 5V**: Điều khiển máy bơm nước.
-- **Cảm biến độ ẩm đất**: Để đo độ ẩm.
-- **Bơm nước 12V**: Để tưới nước.
-- **LED RGB**: Để hiển thị trạng thái cảnh báo của hệ thống.
+- **NodeMCU ESP8266**.
+- **Relay 5V có Opto cách ly kích mức High/Low**: Điều khiển máy bơm nước.
+- **Cảm biến độ ẩm đất dùng LM393**: Để đo độ ẩm.
+- **Bơm nước 12V RS385**: Để tưới nước.
+- **LED đỏ, xanh, vàng**: Để hiển thị trạng thái cảnh báo của hệ thống.
 - **Dây kết nối, test board**, **nguồn 5V** cho relay và ESP8266.
-- **Nguồn 12V** cho máy bơm.
+- **Nguồn tổ ong 12V-5A** cho máy bơm.
 
 ### Phần mềm:
 - **Arduino IDE**: Dùng để lập trình ESP8266.
@@ -159,9 +159,9 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 ### 5.4. Thêm các widget vào project
 - **Styled Button Widget (V9)**: Điều khiển relay khi ở chế độ thủ công.
 - **Value Display Widget (V1)**: Hiển thị độ ẩm đất.
-- **LCD Widget (V6)**: Hiển thị trạng thái độ ẩm trên LCD.
+- **LCD Widget (V6)**: Hiển thị trạng thái độ ẩm (cao, thấp, bình thường) trên LCD.
 - **Time Input Widget (V15)**: Cài đặt thời gian hẹn giờ tưới nước.
-- **LED Widget (V10, V11, V12)**: Hiển thị trạng thái cảnh báo.
+- **LED Widget (V10, V11, V12)**: Hiển thị trạng thái cảnh báo bằng màu LED (đỏ, xanh, vàng tương ứng với độ ẩm thấp, bình thường, cao).
 - **Numeric Input (V3, V4)**: Thiết lập ngưỡng trên và ngưỡng dưới phù hợp cho cây trồng.
 - **Value Display (V13, V14)**: Hiển thị thời gian và ngày tháng hiện tại theo thời gian thực.
 - **Segmented Switch (V2)**: Chọn chế độ hoạt động để điều khiển relay.
@@ -175,8 +175,8 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 ---
 
 ## 6. Cách sử dụng hệ thống
-Lắp mạch theo sơ đồ, tải về và cấu hình mã nguồn:
-- Dán đoạn mã sau vào PowerShell (Windows) hoặc Bash, Zsh (Linux) để tải mã nguồn về máy tính:
+Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã nguồn:
+- Dán đoạn mã sau vào PowerShell (Windows) hoặc Bash, (Linux) để tải mã nguồn về máy tính:
 
         git clone https://github.com/Sefany2723/ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git && cd ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong && .\manguon.ino
 - Mở file mã nguồn trong Arduino IDE và cập nhật các thông tin WiFi và Blynk:
@@ -261,12 +261,12 @@ Lắp mạch theo sơ đồ, tải về và cấu hình mã nguồn:
    **Tác dụng đối với hệ thống**: Cho phép người dùng tự tay điều khiển hệ thống tưới nước mà không phụ thuộc vào độ ẩm hay lịch hẹn giờ.
 
 ### 7.8. `controlRelayBySchedule()`:
-- Hàm này điều khiển relay trong chế độ hẹn giờ. Hệ thống sẽ bật/tắt relay dựa trên thời gian hẹn và các ngày trong tuần mà người dùng đã chọn.
+- Hàm này điều khiển relay trong chế độ hẹn giờ. Hệ thống sẽ bật/tắt relay dựa trên thời gian hẹn (giờ bắt đầu, giờ kết thúc và các ngày trong tuần mà người dùng đã chọn).
 
    **Tác dụng đối với hệ thống**: Cung cấp khả năng tưới nước theo lịch hẹn, cho phép người dùng thiết lập thời gian chính xác cho việc bật/tắt hệ thống tưới.
 
 ### 7.9. `updateTimeDisplay()`:
-- Hàm này lấy thời gian thực từ server NTP và cập nhật lên ứng dụng Blynk (bao gồm giờ:phút:giây và ngày tháng năm).
+- Hàm này lấy thời gian thực từ server NTP và cập nhật lên ứng dụng Blynk (bao gồm giờ:phút:giây và thứ ngày/tháng/năm).
 
    **Tác dụng đối với hệ thống**: Hiển thị thời gian thực trên ứng dụng Blynk để người dùng theo dõi.
 
