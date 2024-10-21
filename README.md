@@ -178,7 +178,7 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã nguồn:
 - Dán đoạn mã sau vào PowerShell (Windows) hoặc Bash, (Linux) để tải mã nguồn về máy tính:
 
-        git clone https://github.com/Sefany2723/ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git && cd ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong && .\manguon.ino
+        git clone https://github.com/Sefany2723/NodeMCU-ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git && cd ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong && .\manguon.ino
 - Mở file mã nguồn trong Arduino IDE và cập nhật các thông tin WiFi và Blynk:
 
         char auth[] = "YOUR_BLYNK_AUTH_TOKEN";
