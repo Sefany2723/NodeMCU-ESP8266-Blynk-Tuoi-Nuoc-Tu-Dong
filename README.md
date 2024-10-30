@@ -82,9 +82,9 @@ Hệ thống tưới tự động này sử dụng vi điều khiển ESP8266 k�
 
 ### Phần mềm:
 - **Arduino IDE**: Dùng để lập trình ESP8266.
-- **Blynk App (Legacy)**: Điều khiển và giám sát hệ thống qua smartphone.
+- ~~**Blynk App (Legacy)**: Điều khiển và giám sát hệ thống qua smartphone.~~
 - **Thư viện cần thiết:** ESP8266, Blynk, Time, NTPClient.
-
+- **Cập nhât**: Đã có **Blynk** phiên bản **2.0**, cập nhật thêm nhiều tính năng mới và sửa một vài lỗi tồn đọng ở phiên bản cũ.
 ---
 
 ## 3. Sơ đồ kết nối phần cứng
@@ -137,12 +137,12 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 
 ---
 
-## 5. Cài đặt Blynk App (Legacy)
+## ~~5. Cài đặt Blynk App (Legacy)~~
 
-### 5.1. Tải và cài đặt Blynk App (Legacy)
+### ~~5.1. Tải và cài đặt Blynk App (Legacy)~~
 - ~~**iOS**: Truy cập [App Store](https://apps.apple.com) và tìm kiếm **Blynk Legacy** để tải về.~~
-- **Android**: Truy cập [APKMirror](https://www.apkmirror.com) và tìm kiếm **Blynk Legacy** để tải về.
-- **Cập nhật**: **Blynk App Legacy** đã bị xóa ở **App Store**, vì vậy muốn dùng hệ thống này phải dùng máy **Android**.
+- ~~**Android**: Truy cập [APKMirror](https://www.apkmirror.com) và tìm kiếm **Blynk Legacy** để tải về.~~
+- **Cập nhật**: **Blynk App Legacy** đã bị xóa, vì vậy chúng ta sẽ dùng phiên bản mới có tên là **Blynk IoT**. Vào cửa hàng ứng dụng tùy theo hệ điều hành của bạn, tìm từ khóa **Blynk IoT** và tải về. Sau đó tiến hành tạo tài khoản và tạo project tương tự như ở bản **Blynk Legacy** mà tôi đã trình bày ở đây.
 
 ### 5.2. Đăng ký tài khoản và đăng nhập
 - Mở app Blynk, chọn **Create New Account** và nhập email và mật khẩu để đăng ký tài khoản.
