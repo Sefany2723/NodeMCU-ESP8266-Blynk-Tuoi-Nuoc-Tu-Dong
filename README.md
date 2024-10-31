@@ -18,7 +18,7 @@
     + [5.1. Tải và cài đặt Blynk App (Legacy)](#51-tải-và-cài-đặt-blynk-app-legacy)
     + [5.2. Đăng ký tài khoản và đăng nhập](#52-đăng-ký-tài-khoản-và-đăng-nhập)
     + [5.3. Tạo project Blynk](#53-tạo-project-blynk)
-    + [5.4. Thêm các widget vào project](#54-thêm-các-widget-vào-project)
+    + [5.4. Thêm datastreams và các widget vào template](#54-thêm-datastreams-và-các-widget-vào-template)
   * [6. Cách sử dụng hệ thống](#6-cách-sử-dụng-hệ-thống)
     + [6.1. Các chế độ hoạt động](#61-các-chế-độ-hoạt-động)
     + [6.2. Điều chỉnh ngưỡng độ ẩm](#62-điều-chỉnh-ngưỡng-độ-ẩm)
