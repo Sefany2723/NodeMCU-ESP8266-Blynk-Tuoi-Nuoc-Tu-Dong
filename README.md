@@ -153,7 +153,7 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 
 ### 5.3. Tạo project Blynk
 - Sau khi đăng nhập, vào **Developer Zone**, sau đó nhấn dấu `+ New Template` để tạo một template mới. Lúc này bạn sẽ tạo giao diện app điều khiển theo hướng dẫn ở **mục 5.4**.
-- Chọn **Devices**, chọn **Template** là cái chúng ta đã tạo ở treenn, chọn **phần cứng** là **ESP8266** và chọn **Connection Type** là **WiFi**.
+- Chọn **Devices**, chọn **Template** là cái chúng ta đã tạo ở trên, chọn **phần cứng** là **ESP8266** và chọn **Connection Type** là **WiFi**.
 - Nhấn **Create** để tạo **Devices**, bạn sẽ nhận được mã `auth_token`, `template_name`, template_id qua **email** và trên trang cấu hình của **Blynk**. Lưu mã này để dùng trong code.
 
 ### 5.4. Thêm datastreams và các widget vào template
