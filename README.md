@@ -129,7 +129,7 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 - Trong Arduino IDE, vào **Tools > Manage Libraries**.
 - Tìm kiếm `ESP8266WiFi` và chọn **Install**.
 
-#### Bước 2: Cài thư viện Blynk (v0.6.1)
+#### Bước 2: Cài thư viện Blynk 
 - Tương tự, tìm và cài thư viện `Blynk` từ **Manage Libraries**.
 
 #### Bước 3: Cài thư viện Time và NTPClient
@@ -181,13 +181,18 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
         git clone https://github.com/Sefany2723/NodeMCU-ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong.git && cd NodeMCU-ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong && .\manguon.ino
 - Mở file mã nguồn trong Arduino IDE và cập nhật các thông tin WiFi và Blynk:
 
-        char auth[] = "YOUR_BLYNK_AUTH_TOKEN";
+        #define BLYNK_AUTH_TOKEN "YOUR_AUTH_TOKEN"
+        #define BLYNK_TEMPLATE_ID "YOUR_TEMPLATE_ID"
+        #define BLYNK_TEMPLATE_NAME "YOUR_TEMPLATE_NAME"
         char ssid[] = "YOUR_WIFI_SSID";
         char pass[] = "YOUR_WIFI_PASSWORD";
 
-- Thay thế thông tin email của bạn trong hàm gửi email:
+- Tạo event trên trang cấu hình của Blynk để gửi thông báo về mail và điện thoại
+  ![](1.png)
+  ![](2.png)
+  ![](3.png)
+  ![](4.png)
 
-        Blynk.email("YOUR_EMAIL@gmail.com", "Cảnh báo độ ẩm", "Độ ẩm cao!");
 
 - Nạp chương trình vào ESP8266
     - Kết nối ESP8266 với máy tính qua cáp USB.
