@@ -200,6 +200,12 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
     - Kết nối ESP8266 với máy tính qua cáp USB.
     - Chọn Board là NodeMCU 1.0 và cổng COM tương ứng.
     - Nhấn Upload để nạp chương trình vào ESP8266.
+    - **Lưu ý**:
+       - Máy tính Windows có thể cần phải cài **[Driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)**
+       - Còn trên Linux nhớ cấp quyền truy cập vào cổng USB bằng lệnh sau
+         ```
+           sudo chmod 666/dev/ttyUSB0
+         ```
 ### 6.1. Các chế độ hoạt động
 - **Chế độ tự động:** Dựa vào ngưỡng độ ẩm đất, hệ thống sẽ tự động bật/tắt relay để điều khiển bơm nước.
 - **Chế độ thủ công:** Người dùng có thể bật/tắt bơm nước trực tiếp qua app Blynk.
