@@ -213,7 +213,7 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
 
 ---
 
-## 7. Chức năng các đoạn mã
+## 7. Chức năng các đoạn mã và lưu đồ giải thuật
 
 
 ### 7.1. `setup()`:
@@ -295,6 +295,9 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
 - Hàm này xử lý dữ liệu đầu vào từ widget Time Input (giờ hẹn) trên ứng dụng Blynk và thiết lập thời gian hẹn cho hệ thống.
 
     **Tác dụng đối với hệ thống**: Cho phép người dùng hẹn giờ bật/tắt hệ thống tưới nước cho các ngày trong tuần.
+### 7.14. Lưu đồ giải thuật
+![](luudogiaithuat.png)
+*[Vào link này để xem rõ hơn](https://github.com/Sefany2723/NodeMCU-ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong/blob/main/luudodangcode.mmd)*
 
 ---
 
