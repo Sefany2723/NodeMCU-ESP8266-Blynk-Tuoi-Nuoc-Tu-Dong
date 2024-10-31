@@ -37,7 +37,7 @@
     + [7.11. `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_HIGH)` và `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_LOW)`](#711-blynk_writevpin_humidity_threshold_high-và-blynk_writevpin_humidity_threshold_low)
     + [7.12. `BLYNK_WRITE(VPIN_RELAY_CONTROL)`](#712-blynk_writevpin_relay_control)
     + [7.13. `BLYNK_WRITE(VPIN_TIME_INPUT)`](#713-blynk_writevpin_time_input)
-    + [7.14. Lưu đồ giải thuật](#714-luu-do-giai-thuat)
+    + [7.14. Lưu đồ giải thuật](#714-lưu-đồ-giải-thuật)
   * [8. Xử lý sự cố](#8-xử-lý-sự-cố)
     + [8.1. ESP8266 không kết nối được WiFi](#81-esp8266-không-kết-nối-được-wifi)
     + [8.2. Ứng dụng Blynk không hiển thị đúng thông tin](#82-ứng-dụng-blynk-không-hiển-thị-đúng-thông-tin)
