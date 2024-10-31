@@ -171,7 +171,7 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
   Bạn có thể tham khảo cách sắp xếp các widget như hình:
 
   
-  ![Giao diện app](giaodienblynkapp.jpg)
+  ![Giao diện app](giaodienappdieukhien.jpg)
 
 ---
 
