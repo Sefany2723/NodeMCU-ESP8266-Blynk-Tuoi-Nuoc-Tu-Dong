@@ -12,7 +12,7 @@
       - [Bước 2: Cài đặt board ESP8266 vào Arduino IDE](#bước-2-cài-đặt-board-esp8266-vào-arduino-ide)
     + [4.2. Cài đặt thư viện cho Arduino IDE](#42-cài-đặt-thư-viện-cho-arduino-ide)
       - [Bước 1: Cài thư viện ESP8266WiFi](#bước-1-cài-thư-viện-esp8266wifi)
-      - [Bước 2: Cài thư viện Blynk (v0.6.1)](#bước-2-cài-thư-viện-blynk-v061)
+      - [Bước 2: Cài thư viện Blynk](#bước-2-cài-thư-viện-blynk)
       - [Bước 3: Cài thư viện Time và NTPClient](#bước-3-cài-thư-viện-time-và-ntpclient)
   * [5. Cài đặt Blynk App (Legacy)](#5-cài-đặt-blynk-app-legacy)
     + [5.1. Tải và cài đặt Blynk App (Legacy)](#51-tải-và-cài-đặt-blynk-app-legacy)
@@ -129,7 +129,7 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 - Trong Arduino IDE, vào **Tools > Manage Libraries**.
 - Tìm kiếm `ESP8266WiFi` và chọn **Install**.
 
-#### Bước 2: Cài thư viện Blynk 
+#### Bước 2: Cài thư viện Blynk
 - Tương tự, tìm và cài thư viện `Blynk` từ **Manage Libraries**.
 
 #### Bước 3: Cài thư viện Time và NTPClient
@@ -167,6 +167,7 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 - **Segmented Switch (V2)**: Chọn chế độ hoạt động để điều khiển relay.
 - **SuperChart (V8)**: Đồ thị giá trị độ ẩm theo thời gian.
 
+**V9, V1, V6**... là các Datastreams tương ứng với widget đó.
   Bạn có thể tham khảo cách sắp xếp các widget như hình:
 
   
@@ -359,16 +360,18 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
   - Đảm bảo các chân D5, D6, D7 của ESP8266 được lập trình để điều khiển đèn LED tương ứng.
   - Kiểm tra lại phần mã điều khiển LED để đảm bảo các lệnh được thực thi đúng.
 
-### 8.6. Không nhận được thông báo qua email
+### 8.6. Không nhận được thông báo qua email và app
 - **Nguyên nhân có thể:**
   - Cấu hình email không chính xác trong mã nguồn.
   - Server email có thể đang chặn yêu cầu gửi email từ Blynk.
-  - Giới hạn gửi email của Blynk đã bị vượt qua (Blynk Legacy có giới hạn số lượng email miễn phí hàng ngày).
+  - Giới hạn gửi email của Blynk đã bị vượt qua (Blynk có giới hạn số lượng email miễn phí hàng ngày).
+  - Chưa cấp quyền thông báo ở phần cài đặt của app
 
 - **Cách khắc phục:**
   - Kiểm tra cấu hình email trong mã, đảm bảo đúng định dạng địa chỉ email.
   - Thử sử dụng một địa chỉ email khác hoặc cấu hình server SMTP của riêng bạn.
   - Kiểm tra số lượng email đã được gửi trong ngày, nếu vượt quá giới hạn, hãy đợi sang ngày hôm sau hoặc nâng cấp tài khoản Blynk.
+  - Cấp quyền thông báo ở phần cài đặt của app
 
 ### 8.7. Không đồng bộ được thời gian thực từ NTP server
 - **Nguyên nhân có thể:**
