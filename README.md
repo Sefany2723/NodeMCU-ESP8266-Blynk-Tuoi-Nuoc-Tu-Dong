@@ -152,11 +152,11 @@ Sơ đồ chi tiết cho các chân kết nối và linh kiện sẽ được cu
 - ~~Nếu bạn muốn tự dựng server của riêng mình tham khảo [tại đây](https://github.com/Peterkn2001/blynk-server)~~
 
 ### 5.3. Tạo project Blynk
-- Sau khi đăng nhập, nhấn dấu `+` để tạo một project mới.
-- Chọn **Device** là NodeMCU và chọn **Connection Type** là WiFi.
-- Nhấn **Create** để tạo project, bạn sẽ nhận được mã `auth token` qua email. Lưu mã này để dùng trong code.
+- Sau khi đăng nhập, vào **Developer Zone**, sau đó nhấn dấu `+ New Template` để tạo một template mới. Lúc này bạn sẽ tạo giao diện app điều khiển theo hướng dẫn ở **mục 5.4**.
+- Chọn **Devices**, chọn **Template** là cái chúng ta đã tạo ở treenn, chọn **phần cứng** là **ESP8266** và chọn **Connection Type** là **WiFi**.
+- Nhấn **Create** để tạo **Devices**, bạn sẽ nhận được mã `auth_token`, `template_name`, template_id qua **email** và trên trang cấu hình của **Blynk**. Lưu mã này để dùng trong code.
 
-### 5.4. Thêm các widget vào project
+### 5.4. Thêm datastreams và các widget vào template
 - **Styled Button Widget (V9)**: Điều khiển relay khi ở chế độ thủ công.
 - **Value Display Widget (V1)**: Hiển thị độ ẩm đất.
 - **LCD Widget (V6)**: Hiển thị trạng thái độ ẩm (cao, thấp, bình thường) trên LCD.
