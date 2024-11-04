@@ -19,7 +19,7 @@
 // Định nghĩa các Virtual Pin để giao tiếp giữa ứng dụng Blynk và phần cứng
 #define VPIN_HUMIDITY V1  // Hiển thị giá trị độ ẩm (%) trên Blynk app
 #define VPIN_HUMIDITY_CHART V8 // Hiển thị biểu đồ độ ẩm theo thời gian
-#define VPIN_MODE_SELECT V2 // Segmented Switch để chọn chế độ (1: Tự động, 2: Thủ công, 3: Hẹn giờ)
+#define VPIN_MODE_SELECT V2 // Segmented Switch để chọn chế độ (0: Tự động, 1: Thủ công, 2: Hẹn giờ)
 #define VPIN_HUMIDITY_THRESHOLD_HIGH V3 // Ngưỡng độ ẩm cao để cảnh báo
 #define VPIN_HUMIDITY_THRESHOLD_LOW V4 // Ngưỡng độ ẩm thấp để cảnh báo
 #define VPIN_RELAY_CONTROL V9 // Button để điều khiển relay ở chế độ thủ công
