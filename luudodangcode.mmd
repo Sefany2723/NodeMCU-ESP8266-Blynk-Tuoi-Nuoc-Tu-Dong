@@ -19,7 +19,7 @@ graph TD;
     C4 -->|Có| C5[Thông báo không kết nối được Blynk]:::error
     C4 -->|Không| C1
     C2 -->|Có| C6[In thông báo kết nối Blynk thành công]:::success
-    C6 --> C7[Cập nhật giá trị từ các Virtual Pin (Blynk.syncVirtual)]:::action
+    C6 --> C7["Đồng bộ giá trị từ các Virtual Pin"]:::action
 
     %% Cấu hình các chân và khởi động các module
     C7 --> D1[Thiết lập chân LED và Relay]:::action
@@ -53,7 +53,7 @@ graph TD;
 
     %% Đọc cảm biến và cập nhật Blynk
     E1 --> G1[Đọc cảm biến độ ẩm đất]:::action
-    G1 --> G2["Tính giá trị phần trăm độ ẩm từ cảm biến (map(analogValue, 0, 1023, 0, 100))"]:::action
+    G1 --> G2["Tính giá trị phần trăm độ ẩm từ cảm biến (map)"]:::action
     G2 --> G3[Cập nhật độ ẩm lên Blynk]:::action
     G2 --> G4[Kiểm tra ngưỡng độ ẩm]:::action
 
@@ -61,12 +61,12 @@ graph TD;
     G4 --> H1{Độ ẩm cao hơn ngưỡng?}:::decision
     H1 -->|Có| H2["Chuyển màu LED cảnh báo (vàng)"]:::warning
     H2 --> H3[Gửi thông báo độ ẩm cao qua Blynk]:::action
-    H3 --> H4[Gửi thông báo sự kiện Blynk (Blynk.logEvent)]:::action
+    H3 --> H4["Gửi thông báo sự kiện Blynk logEvent"]:::action
     H4 --> H5[Hiển thị 'Độ ẩm cao' trên LCD]:::action
     H1 -->|Không| H6{Độ ẩm thấp hơn ngưỡng?}:::decision
     H6 -->|Có| H7["Chuyển màu LED cảnh báo (đỏ)"]:::warning
     H7 --> H8[Gửi thông báo độ ẩm thấp qua Blynk]:::action
-    H8 --> H9[Gửi thông báo sự kiện Blynk (Blynk.logEvent)]:::action
+    H8 --> H9["Gửi thông báo sự kiện Blynk logEvent"]:::action
     H9 --> H10[Hiển thị 'Độ ẩm thấp' trên LCD]:::action
     H6 -->|Không| H11[Chuyển LED xanh cho độ ẩm bình thường]:::success
     H11 --> H12[Hiển thị 'Độ ẩm bình thường' trên LCD]:::action
@@ -109,3 +109,4 @@ graph TD;
     classDef warning fill:#ffdd57,stroke:#000,stroke-width:1px;
     classDef error fill:#ff6b6b,stroke:#000,stroke-width:1px;
     classDef loop fill:#ffe6e6,stroke:#000,stroke-width:1px;
+
