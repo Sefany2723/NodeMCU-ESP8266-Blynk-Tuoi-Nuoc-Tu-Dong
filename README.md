@@ -37,14 +37,16 @@
     + [7.11. `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_HIGH)` và `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_LOW)`](#711-blynk_writevpin_humidity_threshold_high-và-blynk_writevpin_humidity_threshold_low)
     + [7.12. `BLYNK_WRITE(VPIN_RELAY_CONTROL)`](#712-blynk_writevpin_relay_control)
     + [7.13. `BLYNK_WRITE(VPIN_TIME_INPUT)`](#713-blynk_writevpin_time_input)
-    + [7.14. Lưu đồ giải thuật](#714-lưu-đồ-giải-thuật)
+    + [7.14. `sendHumidityData()`](#714-sendhumiditydata)
+    + [7.15. `timerSettingsValid()`](#715-timersettingsvalid)
+    + [7.16. Lưu đồ giải thuật](#716-lưu-đồ-giải-thuật)
   * [8. Xử lý sự cố](#8-xử-lý-sự-cố)
     + [8.1. ESP8266 không kết nối được WiFi](#81-esp8266-không-kết-nối-được-wifi)
     + [8.2. Ứng dụng Blynk không hiển thị đúng thông tin](#82-ứng-dụng-blynk-không-hiển-thị-đúng-thông-tin)
     + [8.3. Relay không hoạt động](#83-relay-không-hoạt-động)
     + [8.4. Bơm nước không hoạt động](#84-bơm-nước-không-hoạt-động)
     + [8.5. Đèn LED cảnh báo không sáng](#85-đèn-led-cảnh-báo-không-sáng)
-    + [8.6. Không nhận được thông báo qua email](#86-không-nhận-được-thông-báo-qua-email)
+    + [8.6. Không nhận được thông báo qua email và app](#86-không-nhận-được-thông-báo-qua-email-và-app)
     + [8.7. Không đồng bộ được thời gian thực từ NTP server](#87-không-đồng-bộ-được-thời-gian-thực-từ-ntp-server)
   * [9. Ghi chú](#9-ghi-chú)
     + [9.1. An toàn về điện](#91-an-toàn-về-điện)
@@ -223,7 +225,7 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
 ## 7. Chức năng các đoạn mã và lưu đồ giải thuật
 
 
-### 7.1. `setup()`:
+### 7.1. `setup()`
 - Hàm này thực hiện các thiết lập ban đầu cho hệ thống, bao gồm:
     - Kết nối với WiFi và server Blynk.
     - Thiết lập các chân đầu ra cho đèn LED và relay.
@@ -233,21 +235,22 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
 
    **Tác dụng đối với hệ thống**: Đảm bảo hệ thống khởi động chính xác, kết nối với WiFi, server Blynk và đồng bộ các giá trị ban đầu từ ứng dụng.
 
-### 7.2. `loop()`:
+### 7.2. `loop()`
 - Hàm này được gọi liên tục trong suốt thời gian hoạt động của hệ thống, bao gồm:
+     - Kiểm tra trạng thái kết nối WiFi và tự động kết nối lại nếu mất kết nối.
+     - Kiểm tra trạng thái kết nối Blynk và tự động kết nối lại nếu mất kết nối.
      - Thực thi các tác vụ của Blynk (`Blynk.run()`), đảm bảo hệ thống giao tiếp với server Blynk.
      - Thực hiện các tác vụ định kỳ do bộ hẹn giờ thiết lập (`timer.run()`), bao gồm cập nhật hiển thị thời gian và điều khiển relay.
-     - Đọc giá trị độ ẩm từ cảm biến và gửi giá trị này lên ứng dụng Blynk.
-     - Gọi các hàm điều khiển relay và kiểm tra độ ẩm để đưa ra các cảnh báo cần thiết.
+     - Gọi các hàm kiểm tra độ ẩm và điều khiển relay theo chế độ hoạt động.
 
-   **Tác dụng đối với hệ thống**: Đảm bảo hệ thống hoạt động liên tục, kiểm soát relay và giám sát giá trị độ ẩm.
+   **Tác dụng đối với hệ thống**: Đảm bảo hệ thống hoạt động liên tục, duy trì kết nối, kiểm soát relay và giám sát giá trị độ ẩm.
 
-### 7.3. `updateDisplay()`:
+### 7.3. `updateDisplay()`
 - Hàm này được gọi mỗi giây để cập nhật thời gian và điều khiển relay theo hẹn giờ.
    
    **Tác dụng đối với hệ thống**: Hiển thị thời gian và quản lý điều khiển relay theo lịch hẹn.
 
-### 7.4. `checkHumidityAndSendAlerts()`:
+### 7.4. `checkHumidityAndSendAlerts()`
 - Hàm này kiểm tra giá trị độ ẩm hiện tại so với các ngưỡng cao và thấp đã đặt. Nếu độ ẩm vượt ngưỡng, hệ thống sẽ gửi cảnh báo qua ứng dụng Blynk và email. Các đèn LED trên thiết bị cũng sẽ thay đổi trạng thái tương ứng với tình trạng độ ẩm:
      - Đèn đỏ sáng nếu độ ẩm thấp.
      - Đèn vàng sáng nếu độ ẩm cao.
@@ -255,56 +258,74 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
 
    **Tác dụng đối với hệ thống**: Giúp người dùng giám sát độ ẩm một cách trực quan và qua cảnh báo từ xa (qua ứng dụng và email).
 
-### 7.5. `controlRelayByMode()`:
+### 7.5. `controlRelayByMode()`
 - Hàm này điều khiển relay dựa trên chế độ hoạt động đã được cài đặt:
-     - Chế độ 1 (Tự động): Relay được điều khiển dựa trên giá trị độ ẩm.
-     - Chế độ 2 (Thủ công): Người dùng có thể bật/tắt relay bằng nút nhấn trên ứng dụng Blynk.
-     - Chế độ 3 (Hẹn giờ): Relay được bật/tắt theo khoảng thời gian đã hẹn trước.
+     - Chế độ 0 (Tự động): Relay được điều khiển dựa trên giá trị độ ẩm.
+     - Chế độ 1 (Thủ công): Người dùng có thể bật/tắt relay bằng nút nhấn trên ứng dụng Blynk.
+     - Chế độ 2 (Hẹn giờ): Relay được bật/tắt theo khoảng thời gian đã hẹn trước.
 
    **Tác dụng đối với hệ thống**: Cho phép điều khiển relay một cách linh hoạt, phù hợp với nhu cầu của người dùng.
 
-### 7.6. `controlRelayAutomatically()`:
+### 7.6. `controlRelayAutomatically()`
 - Hàm này điều khiển relay trong chế độ tự động. Nếu độ ẩm vượt ngưỡng cao, relay sẽ tắt. Nếu độ ẩm dưới ngưỡng thấp, relay sẽ bật.
 
    **Tác dụng đối với hệ thống**: Điều khiển hệ thống tưới nước tự động dựa trên độ ẩm của đất.
 
-### 7.7. `controlRelayManually()`:
+### 7.7. `controlRelayManually()`
 - Hàm này điều khiển relay trong chế độ thủ công. Relay sẽ bật/tắt theo trạng thái của nút điều khiển trong ứng dụng Blynk.
 
    **Tác dụng đối với hệ thống**: Cho phép người dùng tự tay điều khiển hệ thống tưới nước mà không phụ thuộc vào độ ẩm hay lịch hẹn giờ.
 
-### 7.8. `controlRelayBySchedule()`:
+### 7.8. `controlRelayBySchedule()`
 - Hàm này điều khiển relay trong chế độ hẹn giờ. Hệ thống sẽ bật/tắt relay dựa trên thời gian hẹn (giờ bắt đầu, giờ kết thúc và các ngày trong tuần mà người dùng đã chọn).
 
    **Tác dụng đối với hệ thống**: Cung cấp khả năng tưới nước theo lịch hẹn, cho phép người dùng thiết lập thời gian chính xác cho việc bật/tắt hệ thống tưới.
 
-### 7.9. `updateTimeDisplay()`:
+### 7.9. `updateTimeDisplay()`
 - Hàm này lấy thời gian thực từ server NTP và cập nhật lên ứng dụng Blynk (bao gồm giờ:phút:giây và thứ ngày/tháng/năm).
 
    **Tác dụng đối với hệ thống**: Hiển thị thời gian thực trên ứng dụng Blynk để người dùng theo dõi.
 
-### 7.10. `BLYNK_WRITE(VPIN_MODE_SELECT)`:
+### 7.10. `BLYNK_WRITE(VPIN_MODE_SELECT)`
 - Hàm này xử lý sự kiện khi người dùng thay đổi chế độ hoạt động trên ứng dụng Blynk.
 
     **Tác dụng đối với hệ thống**: Cho phép người dùng chuyển đổi giữa các chế độ tự động, thủ công, và hẹn giờ.
 
-### 7.11. `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_HIGH)` và `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_LOW)`:
+### 7.11. `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_HIGH)` và `BLYNK_WRITE(VPIN_HUMIDITY_THRESHOLD_LOW)`
 - Hai hàm này xử lý sự kiện khi người dùng thay đổi ngưỡng độ ẩm cao và thấp trên ứng dụng Blynk.
 
     **Tác dụng đối với hệ thống**: Cập nhật ngưỡng độ ẩm theo yêu cầu của người dùng để điều khiển hệ thống tưới nước.
 
-### 7.12. `BLYNK_WRITE(VPIN_RELAY_CONTROL)`:
+### 7.12. `BLYNK_WRITE(VPIN_RELAY_CONTROL)`
 - Hàm này xử lý sự kiện khi người dùng bật/tắt relay trong chế độ thủ công.
 
     **Tác dụng đối với hệ thống**: Điều khiển trạng thái bật/tắt của hệ thống tưới nước trong chế độ thủ công.
 
-### 7.13. `BLYNK_WRITE(VPIN_TIME_INPUT)`:
+### 7.13. `BLYNK_WRITE(VPIN_TIME_INPUT)`
 - Hàm này xử lý dữ liệu đầu vào từ widget Time Input (giờ hẹn) trên ứng dụng Blynk và thiết lập thời gian hẹn cho hệ thống.
 
     **Tác dụng đối với hệ thống**: Cho phép người dùng hẹn giờ bật/tắt hệ thống tưới nước cho các ngày trong tuần.
-### 7.14. Lưu đồ giải thuật
+
+### 7.14. `sendHumidityData()`
+- Hàm này đọc giá trị từ cảm biến độ ẩm đất, chuyển đổi thành giá trị phần trăm và gửi dữ liệu lên ứng dụng Blynk. Hàm này được gọi mỗi giây thông qua timer.
+
+    **Tác dụng đối với hệ thống**: Cập nhật liên tục dữ liệu độ ẩm đất lên ứng dụng Blynk, giúp người dùng theo dõi tình trạng độ ẩm trong thời gian thực và hiển thị dữ liệu trên đồ thị.
+
+### 7.15. `timerSettingsValid()`
+- Hàm này kiểm tra xem người dùng đã thiết lập đầy đủ thông tin thời gian hẹn giờ hay chưa bằng cách xác nhận các giá trị giờ và phút bắt đầu/kết thúc đã được đặt.
+
+    **Tác dụng đối với hệ thống**: Đảm bảo rằng chế độ hẹn giờ chỉ hoạt động khi đã có đầy đủ thông tin thời gian, tránh tình trạng hệ thống hoạt động không đúng do thiếu thông tin.
+
+### 7.16. Lưu đồ giải thuật
 ![](luudogiaithuat.png)
 *[Vào link này để xem rõ hơn](https://github.com/Sefany2723/NodeMCU-ESP8266-Blynk-Tuoi-Nuoc-Tu-Dong/blob/main/luudodangcode.mmd)*
+
+Lưu đồ giải thuật biểu diễn trực quan quy trình hoạt động của hệ thống, bao gồm các phần:
+- Khởi tạo và kết nối
+- Đọc giá trị độ ẩm và xử lý
+- Xử lý các chế độ hoạt động
+- Kiểm tra và tự động kết nối lại khi mất kết nối
+- Cập nhật dữ liệu lên Blynk và xử lý thông báo
 
 ---
 
@@ -403,7 +424,7 @@ Lắp mạch theo sơ đồ ở **Mục 3**, tải về và cấu hình mã ngu�
 - **Cách ly nước và điện**: Trong quá trình tưới nước, cần tránh để nước tiếp xúc với các phần mạch điện để tránh nguy cơ chập điện hoặc giật điện.
 
 ### 9.2. Bảo trì hệ thống
-- Thường xuyên kiểm tra và vệ sinh cảm biến độ ẩm để đảm bảo cảm biến không bị bám bẩn hoặc bị hỏng do môi trường ẩm ướt.
+- Thường xuyên kiểm tra và vệ sinh cảm biến độ ẩm đất để đảm bảo cảm biến không bị bám bẩn hoặc bị hỏng do môi trường ẩm ướt.
 - Kiểm tra lại dây điện và kết nối của các linh kiện sau một thời gian sử dụng, đặc biệt các dây nối tới bơm nước và relay để đảm bảo không bị lỏng hoặc hỏng.
 - Đảm bảo hệ thống luôn được bảo vệ khỏi nước và bụi bằng các hộp bảo vệ, đặc biệt là phần mạch điện và ESP8266.
 
