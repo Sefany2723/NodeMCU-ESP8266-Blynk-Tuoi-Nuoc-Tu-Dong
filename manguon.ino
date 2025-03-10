@@ -118,7 +118,7 @@ void setup()
   setSyncInterval(60);
   // Khởi tạo Timer để cập nhật thời gian và điều khiển relay theo chu kỳ 1 giây
   timer.setInterval(1000L, updateDisplay); // Mỗi 1000ms (1 giây) sẽ gọi hàm updateDisplay
-  timer.setInterval(5000L, sendHumidityData); // Mỗi 5 giây gửi độ ẩm
+  timer.setInterval(1000L, sendHumidityData); // Mỗi 1 giây gửi độ ẩm
 }
 void loop() 
 {
