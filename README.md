@@ -23,7 +23,7 @@
     + [6.1. Các chế độ hoạt động](#61-các-chế-độ-hoạt-động)
     + [6.2. Điều chỉnh ngưỡng độ ẩm](#62-điều-chỉnh-ngưỡng-độ-ẩm)
     + [6.3. Hiển thị trạng thái và thời gian](#63-hiển-thị-trạng-thái-và-thời-gian)
-  * [7. Chức năng các đoạn mã](#7-chức-năng-các-đoạn-mã)
+  * [7. Chức năng các đoạn mã và lưu đồ giải thuật](#7-chức-năng-các-đoạn-mã-và-lưu-đồ-giải-thuật)
     + [7.1. `setup()`](#71-setup)
     + [7.2. `loop()`](#72-loop)
     + [7.3. `updateDisplay()`](#73-updatedisplay)
